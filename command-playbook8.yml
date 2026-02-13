@@ -1,0 +1,16 @@
+---
+- name: install,git,vim,httpd,tree packages onto slave machines
+  hosts: webservers
+  become: yes
+  tasks:
+
+    - name: install git
+      yum:
+        name: "{{ items }}"
+        state: present
+
+       with_items:
+         - git
+         - tree
+         - httpd
+         - vim
